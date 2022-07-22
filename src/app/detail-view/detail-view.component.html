@@ -1,0 +1,25 @@
+<section>
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title><strong>Title:</strong> {{data?.title}}</mat-card-title>
+      <mat-card-subtitle><strong>State:</strong> {{data?.state}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="data.user?.avatar_url" alt="avatar"/>
+    <mat-card-content>
+      <p>
+        <strong>Body:</strong> {{data?.body}}
+      </p>
+      <p>
+        <strong>Date:</strong> {{data?.state === CLOSED ? data?.closed_at : data?.created_at | date}}
+      </p>
+      <p>
+        <strong>Username:</strong> {{data.user?.login}}
+      </p>
+      <ng-container *ngFor="let comment of comments; let i = index">
+        <div><strong>Comment nr{{i}}.</strong></div>
+        <div>{{comment?.body}}</div>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+</section>

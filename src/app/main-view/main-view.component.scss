@@ -1,0 +1,55 @@
+tr {
+  cursor: pointer;
+}
+
+.content {
+  width: 100%;
+}
+
+th, td {
+  padding-right: 5rem !important;
+}
+
+:host::ng-deep .mat-paginator-container {
+  justify-content: flex-start !important;
+}
+
+::ng-deep .mat-form-field {
+  .mat-input-element {
+    color: slategray;
+  }
+
+  .mat-form-field-label {
+    color: slategray;
+  }
+
+  .mat-form-field-underline {
+    background-color: slategray;
+  }
+
+  .mat-form-field-ripple {
+    background-color: slategray;
+  }
+
+  .mat-form-field-required-marker {
+    color: slategray;
+  }
+}
+
+.filter {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+mat-paginator {
+  @extend .content-position;
+}
+
+table {
+  @extend .content-position;
+}
+
+.content-position {
+  position: relative;
+  left: 10%;
+}

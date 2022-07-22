@@ -1,0 +1,44 @@
+<div class="content">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" matSort
+         (matSortChange)="announceSortChange($event)">
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="filter">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter state here*">
+          State
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.state}}</td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{element.title}}</td>
+    </ng-container>
+    <ng-container matColumnDef="comments">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Comment count</th>
+      <td mat-cell *matCellDef="let element">{{element.comments}}</td>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Issue nr.</th>
+      <td mat-cell *matCellDef="let element">#{{element.id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container>
+          {{element.state === CLOSED ? element.closed_at : element.created_at | date}}
+        </ng-container>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      (click)="showDetail(row)"
+      *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 30]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
